@@ -1,0 +1,24 @@
+{
+  "name": "glicemilton-back",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Lord1nho/glicemilton-back#readme",
+  "bugs": {
+    "url": "https://github.com/Lord1nho/glicemilton-back/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lord1nho/glicemilton-back.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
