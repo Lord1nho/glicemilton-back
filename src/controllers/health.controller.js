@@ -1,7 +1,27 @@
-// src/controllers/health.controller.js
+import { supabase } from '../connection/supabaseClient.js';
 
-export function healthCheck(req, res) {
+export async function healthCheck(req, res) {
     console.log('Health check acionado ✅');
 
-    res.status(200).json('oi');
+    // consulta simples no banco
+    const { data, error } = await supabase
+        .from('usuario')
+        .select('*')
+        .limit(1);
+
+    if (error) {
+        console.error('Erro no Supabase:', error.message);
+
+        return res.status(500).json({
+            status: 'error',
+            message: 'Erro ao conectar com o banco',
+            error: error.message
+        });
+    }
+
+    return res.status(200).json({
+        status: 'ok',
+        message: 'API e Supabase funcionando',
+        sample: data
+    });
 }
