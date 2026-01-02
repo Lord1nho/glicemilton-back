@@ -1,13 +1,11 @@
 import { supabase } from '../connection/supabaseClient.js';
 
-export async function healthCheck(req, res) {
-    console.log('Health check acionado ✅');
+export async function getDailyCare(req, res) {
 
-    // consulta simples no banco
+    // Buscar todos os alimentos
     const { data, error } = await supabase
-        .from('usuario')
-        .select('*')
-        .limit(1);
+        .from('cuidados_diarios')
+        .select('id, titulo, descricao, icone, ordem, ativo')
 
     if (error) {
         console.error('Erro no Supabase:', error.message);
@@ -21,7 +19,6 @@ export async function healthCheck(req, res) {
 
     return res.status(200).json({
         status: 'ok',
-        message: 'API e Supabase funcionando',
-        sample: data
+        response: data
     });
 }
